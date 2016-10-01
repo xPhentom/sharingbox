@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welke verhuring hebt u aangevraagd?</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script>
+	    $(function(){
+			$.getJSON('http://localhost:8080/verhuurder/verhuring/1.json', function(data) {   
+				$('#someContainer').html("we hebben deze sharingbox gereserveerd: " + data.datum + " " + data.id);
+			});
+		})
+	</script>
+</head>
+<body>
+	<div id="someContainer"></div>
+	
+	<form:form name="aanvraagForm" action="${url}" role="form"
+	commandName="aanvraagToVerhuring" style="margin-left:20%;">
+	<fieldset id="aanvraag" class="collapse">
+			<br> <br>
+			<h4>Kies een datum :</h4>
+			<br>
+			
+				<br>
+			</c:forEach>
+		</fieldset>
+	
+	
+</body>
+</html>
