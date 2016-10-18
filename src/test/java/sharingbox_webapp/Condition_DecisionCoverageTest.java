@@ -1,18 +1,19 @@
 package sharingbox_webapp;
 
-import static  org.junit.Assert.*;
-import static sharingbox_webapp.Validator.DateSelector;
-
-import be.odisee.verhuursysteem_sharingbox.domain.*;
+import be.odisee.verhuursysteem_sharingbox.domain.Aanvraag;
+import be.odisee.verhuursysteem_sharingbox.domain.Klant;
+import be.odisee.verhuursysteem_sharingbox.domain.Persoon;
 import org.junit.Test;
 
-import java.text.*;
-import java.util.*;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static sharingbox_webapp.Validator.DateSelector;
 
 /**
  * Created by martialh on 10/15/16.
  */
-public class DecisionCoverageTest {
+public class Condition_DecisionCoverageTest {
 
     Persoon persoon = new Persoon("vaste klant", "James", "Harden", "jm@mail.com", "superpass");
     Klant klant = new Klant("particulier", "klant", persoon);

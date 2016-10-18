@@ -16,7 +16,7 @@ import static sharingbox_webapp.Validator.DateSelector;
 
 
 
-public class MultipleConditionTest {
+public class DecisionTableTest {
     Persoon persoon = new Persoon("vaste klant", "James", "Harden", "jm@mail.com", "superpass");
     Klant klant = new Klant("particulier", "klant", persoon);
 

@@ -8,7 +8,7 @@ import static sharingbox_webapp.Validator.Korting;
 /**
  * Created by martialh on 10/18/16.
  */
-public class EPTest {
+public class PartitionAndBoundaryTests {
 
     @Test
     public void PartitionTest() {
@@ -24,7 +24,22 @@ public class EPTest {
             Korting(invalidDay);
         }
         catch (IllegalArgumentException e) {
-            assertEquals("Error should be", "Nummer moet groter zijn dan 0", e.getMessage());
+            assertEquals("Error should be", "Minstens 1 dag huren", e.getMessage());
+        }
+
+    }
+
+    @Test
+    public void BoundaryTest() {
+        int minBoundary=0;
+        int maxBoundary=999999;
+
+        assertEquals(20, Korting(maxBoundary));
+        try {
+            Korting(minBoundary);
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("Error should be", "Minstens 1 dag huren", e.getMessage());
         }
 
     }

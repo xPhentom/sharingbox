@@ -16,7 +16,7 @@ import static sharingbox_webapp.Validator.DateSelector;
 
 
 
-public class ModifiedConditionDecisionTest {
+public class MultipleConditionTest {
     Persoon persoon = new Persoon("vaste klant", "James", "Harden", "jm@mail.com", "superpass");
     Klant klant = new Klant("particulier", "klant", persoon);
 
@@ -39,7 +39,6 @@ public class ModifiedConditionDecisionTest {
 
         Map validateResponse = Validator.Validator(aanvraag);
 
-        //Test Case 02
         assertEquals(
                 "gegevens niet correct ingevuld",
                 validateResponse.get("response")
@@ -52,11 +51,25 @@ public class ModifiedConditionDecisionTest {
 
         Map validateResponse = Validator.Validator(aanvraag);
 
-        //Test Case 03
         assertEquals(
-                "Datum niet beschikbaar",
                 "geen beschikbare sharingbox",
                 validateResponse.get("response")
+        );
+    }
+
+    @Test
+    public void AllFalse() {
+        Aanvraag aanvraag = new Aanvraag("pending", DateSelector(0), "", klant);
+
+        Map validateResponse = Validator.Validator(aanvraag);
+
+        assertEquals(
+                "gegevens niet correct ingevuld",
+                validateResponse.get("response")
+        );
+        assertEquals(
+                "geen beschikbare sharingbox",
+                validateResponse.get("response2")
         );
     }
 }

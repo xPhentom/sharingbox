@@ -1,46 +1,49 @@
 package sharingbox_webapp;
 
-import static  org.junit.Assert.*;
-import static sharingbox_webapp.Validator.DateSelector;
-
-import be.odisee.verhuursysteem_sharingbox.domain.*;
+import be.odisee.verhuursysteem_sharingbox.domain.Aanvraag;
+import be.odisee.verhuursysteem_sharingbox.domain.Klant;
+import be.odisee.verhuursysteem_sharingbox.domain.Persoon;
 import org.junit.Test;
 
-import java.text.*;
-import java.util.*;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static sharingbox_webapp.Validator.DateSelector;
 
 /**
  * Created by martialh on 10/15/16.
  */
-public class DecisionCoverageTest {
+public class ConditionCoverageTest {
 
     Persoon persoon = new Persoon("vaste klant", "James", "Harden", "jm@mail.com", "superpass");
     Klant klant = new Klant("particulier", "klant", persoon);
 
     @Test
-    public void TestTrue() {
-        Aanvraag aanvraagT1 = new Aanvraag("pending", DateSelector(2), "Fakestreet 5", klant);
-        Aanvraag aanvraagT2 = new Aanvraag("pending", DateSelector(1), "", klant);
+    public void TestDateCondition() {
+        Aanvraag aanvraag = new Aanvraag("pending", DateSelector(2), "Fakestreet 5", klant);
 
-        Map validatorResponse = Validator.Validator(aanvraagT1);
+        Map validatorResponse = Validator.Validator(aanvraag);
 
         assertEquals(
-                "Datum beschikbaar en gegevens correct ingevult",
                 "verhuring ingediend",
                 validatorResponse.get("response")
         );
     }
 
     @Test
-    public void TestFalse() {
-        Aanvraag aanvraagT2 = new Aanvraag("pending", DateSelector(1), "", klant);
+    public void TestFilledDataCondition() {
+        Aanvraag aanvraag = new Aanvraag("pending", DateSelector(0), "", klant);
 
-        Map validatorResponse = Validator.Validator(aanvraagT2);
+        Map validatorResponse = Validator.Validator(aanvraag);
 
-        assertNotEquals(
-                "Datum niet beschikbaar en gegevens correct ingevult",
-                "verhuring ingediend",
+        assertEquals(
+                "gegevens niet correct ingevuld",
                 validatorResponse.get("response")
+        );
+        assertEquals(
+                "geen beschikbare sharingbox",
+                validatorResponse.get("response2")
         );
     }
 }
