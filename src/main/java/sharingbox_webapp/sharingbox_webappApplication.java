@@ -11,8 +11,8 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
-@ComponentScan({ "be.odisee.verhuursysteem_sharingbox", "sharingbox_webapp" })
-@EntityScan("be.odisee.verhuursysteem_sharingbox.domain")
+//@ComponentScan({ "be.odisee.verhuursysteem_sharingbox", "sharingbox_webapp" })
+//@EntityScan("be.odisee.verhuursysteem_sharingbox.domain")
 public class sharingbox_webappApplication extends WebMvcConfigurerAdapter {
 
 	public static void main(String[] args) {
