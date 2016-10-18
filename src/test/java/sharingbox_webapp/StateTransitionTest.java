@@ -25,7 +25,7 @@ public class StateTransitionTest {
         verhuring.VerhuringAnnuleren();
         //s2
         verhuring.VerhuringOpheffen();
-        assertEquals("Begin punt (S2) -> (S1)", "Geannuleerd", verhuring.GetStatus());
+        assertEquals("Begin punt (S2) -> (S1)", "In behandeling", verhuring.GetStatus());
     }
 
     @Test
@@ -36,6 +36,6 @@ public class StateTransitionTest {
         verhuring.VerhuringToevoegen();
         //s2
         verhuring.VerhuringAnnuleren();
-        assertEquals("Begin punt (S2) -> (S1)", "In behandeling", verhuring.GetStatus());
+        assertEquals("Begin punt (S2) -> (S1)", "Geannuleerd", verhuring.GetStatus());
     }
 }
