@@ -2,6 +2,7 @@ package sharingbox_webapp;
 
 import be.odisee.verhuursysteem_sharingbox.domain.Aanvraag;
 import be.odisee.verhuursysteem_sharingbox.domain.Klant;
+import be.odisee.verhuursysteem_sharingbox.domain.Verhuring;
 import org.w3c.dom.ranges.RangeException;
 
 import java.util.Arrays;
@@ -80,6 +81,17 @@ public class Validator {
 
         return response;
 
+    }
+
+    public static Boolean VerhuringIsValid(Verhuring verhuring) {
+        Boolean result = false;
+        if (!verhuring.getStatus().isEmpty() && !verhuring.getTevredenheidsscore().isEmpty()) {
+            result = true;
+        }
+        else
+            result = false;
+
+        return result;
     }
 
     public static int Korting(int dagen) {
